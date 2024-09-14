@@ -1,0 +1,17 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Aoppart06chapter01" parent="Theme.Material3.DayNight.NoActionBar">
+
+        <item name="toolbarStyle">@style/Widget.Aoppart6chapter01.Toolbar</item>
+        <item name="toolbarWithArrowButtonStyle">@style/Widget.Aoppart6chapter01.Toolbar.WithArrow</item>
+        <item name="toolbarWithCloseButtonStyle">@style/Widget.Aoppart6chapter01.Toolbar.WithClose</item>
+
+
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+
+
+    <style name="Theme.Aoppart06chapter01" parent="Base.Theme.Aoppart06chapter01" />
+</resources>
