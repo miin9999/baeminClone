@@ -20,6 +20,7 @@ import aop.fastcampus.part06.chapter01.databinding.FragmentHomeBinding
 import aop.fastcampus.part06.chapter01.screen.base.BaseFragment
 import aop.fastcampus.part06.chapter01.screen.main.home.restaurant.RestaurantCategory
 import aop.fastcampus.part06.chapter01.screen.main.home.restaurant.RestaurantListFragment
+import aop.fastcampus.part06.chapter01.screen.main.home.restaurant.RestaurantOrder
 import aop.fastcampus.part06.chapter01.screen.mylocation.MyLocationActivity
 import aop.fastcampus.part06.chapter01.widget.adapter.RestaurantListFragmentPagerAdapter
 import com.google.android.material.tabs.TabLayoutMediator
@@ -87,8 +88,46 @@ class HomeFragment : BaseFragment<HomeViewModel,FragmentHomeBinding>() {
                 )
             }
         }
+
+        orderChipGroup.setOnCheckedChangeListener{ _, checkedId ->
+            when(checkedId){
+                R.id.chipDefault ->{
+                    chipInitialize.isGone =true
+                    changeRestaurantOrder(RestaurantOrder.DEFAULT)
+                }
+
+                R.id.chipInitialize ->{
+                    chipDefault.isChecked = true
+
+                }
+                R.id.chipLowDeliveryTip->{
+                    chipInitialize.isVisible = true
+                    changeRestaurantOrder(RestaurantOrder.LOW_DELIVERY_TIP)
+                }
+                R.id.chipFastDelivery->{
+                    chipInitialize.isVisible = true
+                    changeRestaurantOrder(RestaurantOrder.FAST_DELIVERY)
+
+                }
+                R.id.chipTopRate->{
+                    chipInitialize.isVisible = true
+                    changeRestaurantOrder(RestaurantOrder.TOP_RATE)
+
+                }
+
+            }
+
+
+        }
+
     }
 
+
+    private fun changeRestaurantOrder(order:RestaurantOrder){
+        viewPagerAdapter.fragmentList.forEach {
+            it.viewModel.setRestaurantOrder(order)
+        }
+    }
 
     private fun initViewPager(locationLatLng: LocationLatLngEntity) = with(binding){
 
@@ -96,12 +135,13 @@ class HomeFragment : BaseFragment<HomeViewModel,FragmentHomeBinding>() {
         Log.d("restaurantCategories",restaurantCategories.toString())
 
         if(::viewPagerAdapter.isInitialized.not()){ //초기화되어 있지 않다면
+            orderChipGroup.isVisible = true
             val restaurantListFragmentList = restaurantCategories.map{
                 RestaurantListFragment.newInstance(it,locationLatLng)
                 // restaurantCategories 를 이용해서 newInstance 에서 Fragment 로 만들어온거야 그걸 다시
                 // restaurantCategories 로 받아온 거임 (map 을 이용)
                 // 그래서 restaurantListFragmentList 에는 "전체" 라는 enum class 의 한 부분이 뷰페이저로 들어옴
-                // viewPager 안에 리사이클러뷰를 품고 있는 구조, viewPager 의 카테고리는 RestaurantCategory 라는 enumclass 로 관리
+                // viewPager 안에 리사이클러뷰를 품고 있는 구조, viewPager 의 카테고리는 RestaurantCategory 라는 enum class 로 관리
 
             }
 
@@ -125,6 +165,12 @@ class HomeFragment : BaseFragment<HomeViewModel,FragmentHomeBinding>() {
 
             }
         }
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.checkMyBasket()
 
     }
 
@@ -164,9 +210,23 @@ class HomeFragment : BaseFragment<HomeViewModel,FragmentHomeBinding>() {
 
                 }
 
-
             }
         }
+
+        viewModel.foodMenuBasketLiveData.observe(this){
+            if(it.isNotEmpty()){
+                binding.basketButtonContainer.isVisible = true
+                binding.basketCountTextView.text = getString(R.string.basket_count,it.size)
+                binding.basketButton.setOnClickListener{
+                    // TODO 주문하기 화면으로 이동 or 로그인
+                }
+
+            }else{
+                binding.basketButtonContainer.isGone = true
+                binding.basketButton.setOnClickListener(null)
+            }
+        }
+
 
     }
 

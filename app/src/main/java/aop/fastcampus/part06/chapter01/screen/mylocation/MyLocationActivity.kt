@@ -132,7 +132,6 @@ class MyLocationActivity : BaseActivity<MyLocationViewModel,ActivityMyLocationBi
                         mapSearchInfo.locationLatLng.longitude
                         ),CAMERA_ZOOM_LEVEL
                 )
-
             )
 
             // 카메라가 1초이상 멈추면 그 위치에 대한 api를 불러옴
@@ -149,14 +148,11 @@ class MyLocationActivity : BaseActivity<MyLocationViewModel,ActivityMyLocationBi
                         )
                         isChangeLocation = false
                     },1000)
-
-
                 }
-
             }
-
             isMapInitialized = true
         }
+
 
     }
 

@@ -7,6 +7,7 @@ import android.view.ViewParent
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import aop.fastcampus.part06.chapter01.databinding.ViewholderEmptyBinding
+import aop.fastcampus.part06.chapter01.databinding.ViewholderFoodMenuBinding
 import aop.fastcampus.part06.chapter01.databinding.ViewholderRestaurantBinding
 import aop.fastcampus.part06.chapter01.model.CellType
 import aop.fastcampus.part06.chapter01.model.Model
@@ -14,6 +15,7 @@ import aop.fastcampus.part06.chapter01.screen.base.BaseViewModel
 import aop.fastcampus.part06.chapter01.util.provider.ResourcesProvider
 import aop.fastcampus.part06.chapter01.widget.adapter.viewholder.EmptyViewHolder
 import aop.fastcampus.part06.chapter01.widget.adapter.viewholder.ModelViewHolder
+import aop.fastcampus.part06.chapter01.widget.adapter.viewholder.food.FoodMenuViewHolder
 import aop.fastcampus.part06.chapter01.widget.adapter.viewholder.restaurant.RestaurantViewHolder
 
 object ModelViewHolderMapper {
@@ -38,6 +40,14 @@ object ModelViewHolderMapper {
                 viewModel,
                 resourcesProvider
             )
+
+            CellType.FOOD_CELL -> FoodMenuViewHolder(
+                ViewholderFoodMenuBinding.inflate(inflater,parent,false),
+                viewModel,
+                resourcesProvider
+            )
+
+
         }
         return viewHolder as ModelViewHolder<M>
 

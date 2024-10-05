@@ -6,8 +6,11 @@ import androidx.lifecycle.viewModelScope
 import aop.fastcampus.part06.chapter01.R
 import aop.fastcampus.part06.chapter01.data.entity.LocationLatLngEntity
 import aop.fastcampus.part06.chapter01.data.entity.MapSearchInfoEntity
+import aop.fastcampus.part06.chapter01.data.entity.RestaurantFoodEntity
 import aop.fastcampus.part06.chapter01.data.repository.map.MapRepository
+import aop.fastcampus.part06.chapter01.data.repository.restaurant.food.RestaurantFoodRepository
 import aop.fastcampus.part06.chapter01.data.repository.user.UserRepository
+import aop.fastcampus.part06.chapter01.model.restaurant.food.FoodModel
 import aop.fastcampus.part06.chapter01.screen.base.BaseViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
@@ -15,7 +18,8 @@ import kotlinx.coroutines.launch
 @Suppress("UNREACHABLE_CODE", "UNUSED_EXPRESSION")
 class HomeViewModel(
     private val mapRepository: MapRepository,
-    private val userRepository: UserRepository
+    private val userRepository: UserRepository,
+    private val restaurantFoodRepository: RestaurantFoodRepository
 ) :BaseViewModel(){
 
     companion object{
@@ -23,6 +27,7 @@ class HomeViewModel(
     }
 
     val homeStateLiveData = MutableLiveData<HomeState>(HomeState.Uninitialized)
+    val foodMenuBasketLiveData = MutableLiveData<List<RestaurantFoodEntity>>()
 
     fun loadReverseGeoInformation(
         locationLatLngEntity: LocationLatLngEntity)
@@ -60,6 +65,11 @@ class HomeViewModel(
             else -> {}
         }
         return null
+    }
+
+    fun checkMyBasket() = viewModelScope.launch {
+        foodMenuBasketLiveData.value = restaurantFoodRepository.getAllFoodMenuListInBasket()
+
     }
 
 }
