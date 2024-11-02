@@ -5,7 +5,6 @@ import androidx.lifecycle.viewModelScope
 import aop.fastcampus.part06.chapter01.data.entity.RestaurantFoodEntity
 import aop.fastcampus.part06.chapter01.data.repository.restaurant.food.RestaurantFoodRepository
 import aop.fastcampus.part06.chapter01.model.restaurant.food.FoodModel
-import aop.fastcampus.part06.chapter01.screen.base.BaseFragment
 import aop.fastcampus.part06.chapter01.screen.base.BaseViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
@@ -31,7 +30,9 @@ class RestaurantMenuListViewModel(
                 price = it.price,
                 imageUrl = it.imageUrl,
                 restaurantId = restaurantId,
-                foodId = it.id
+                foodId = it.id,
+                restaurantTitle = it.restaurantTitle
+
             )
         }
     }

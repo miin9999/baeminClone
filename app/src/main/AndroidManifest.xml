@@ -2,9 +2,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
 
     <application
         android:name=".Part6Chapter01Application"
@@ -18,8 +26,17 @@
         android:theme="@style/Theme.Aoppart06chapter01"
         tools:targetApi="31">
         <activity
+            android:name=".screen.review.AddRestaurantReviewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".screen.order.OrderMenuListActivity"
+            android:exported="false" />
+        <activity
             android:name=".screen.main.home.restaurant.detail.RestaurantDetailActivity"
             android:exported="false" />
+        <activity android:name=".screen.review.gallery.GalleryActivity"/>
+        <activity android:name=".screen.review.camera.preview.CameraActivity"/>
+        <activity android:name=".screen.review.camera.preview.ImagePreviewListActivity"/>
         <activity
             android:name=".screen.main.MainActivity"
             android:exported="true">
@@ -32,6 +49,7 @@
         <activity
             android:name=".screen.mylocation.MyLocationActivity"
             android:exported="false" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_map" />

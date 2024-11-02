@@ -12,7 +12,7 @@ import aop.fastcampus.part06.chapter01.data.entity.RestaurantFoodEntity
 
 @Database(
     entities =[LocationLatLngEntity::class,RestaurantEntity::class, RestaurantFoodEntity::class],
-    version = 3,
+    version = 4,
     exportSchema = false
 )
 abstract class ApplicationDatabase: RoomDatabase(){

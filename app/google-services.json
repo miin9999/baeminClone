@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "896862891351",
+    "project_id": "aop-part6-chapter01-ba058",
+    "storage_bucket": "aop-part6-chapter01-ba058.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:896862891351:android:68f80db1d0f8abbc386212",
+        "android_client_info": {
+          "package_name": "aop.fastcampus.part06.chapter01"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "896862891351-ne94kuku67vm18vie90l3dbh3pbldaq8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-E2lkfhmUBRXMEixC1ZAqaqx94DpAtC0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "896862891351-ne94kuku67vm18vie90l3dbh3pbldaq8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

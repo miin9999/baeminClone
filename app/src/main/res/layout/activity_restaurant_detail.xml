@@ -5,8 +5,7 @@
     android:id="@+id/coordinator"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="false"
-    tools:context=".screen.main.home.restaurant.detail.RestaurantDetailActivity">
+    android:fitsSystemWindows="false">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,75 +14,71 @@
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/menuAndReviewTabLayout"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"/>
-
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_collapseMode="pin"/>
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/menuAndReviewViewPager"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/menuAndReviewTabLayout"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_width="0dp"
-            android:layout_height="0dp"/>
+            app:layout_constraintTop_toBottomOf="@id/menuAndReviewTabLayout"/>
 
         <ProgressBar
             android:id="@+id/progressBar"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/basketButtonContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
-        >
+        android:layout_gravity="bottom|end">
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/basketButton"
             android:layout_width="72dp"
             android:layout_height="72dp"
-            android:layout_margin="24dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:src="@drawable/ic_basket"
             app:tint="@color/white"
-            />
+            android:contentDescription="basketButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_margin="24dp"/>
+
         <TextView
             android:id="@+id/basketCountTextView"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            tools:text="+1"
-            android:textSize="16sp"
-            android:elevation="16dp"
-            app:layout_constraintVertical_bias="0.5"
-            app:layout_constraintHorizontal_bias="0.8"
-            app:layout_constraintStart_toStartOf="@id/basketButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="@id/basketButton"
             app:layout_constraintTop_toTopOf="@id/basketButton"
             app:layout_constraintBottom_toBottomOf="@id/basketButton"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-
-
+            app:layout_constraintStart_toStartOf="@id/basketButton"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.8"
+            tools:text="+1"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:elevation="16dp"
+            android:textColor="@android:color/white"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar"
+        android:id="@+id/appBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
@@ -104,122 +99,115 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
                 <ImageView
                     android:id="@+id/restaurantImage"
                     android:layout_width="0dp"
                     android:layout_height="400dp"
-                    android:background="@color/black"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:layout_height="400dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:background="@color/black"/>
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardContainer"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:background="@color/white"
-                    android:elevation="16dp"
-                    app:cardCornerRadius="16dp"
-                    app:layout_constraintBottom_toBottomOf="@id/restaurantImage"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent">
-
+                    android:background="@color/white"
+                    app:layout_constraintBottom_toBottomOf="@id/restaurantImage"
+                    android:elevation="16dp"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="16dp">
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
-
                         <TextView
                             android:id="@+id/restaurantMainTitleTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
-                            android:textColor="@color/black"
-                            android:textSize="32sp"
-                            android:textStyle="bold"
-                            app:layout_constraintEnd_toEndOf="parent"
+                            tools:text="음식점 이름"
                             app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            tools:text="음식점 이름" />
-
+                            android:gravity="center_horizontal"
+                            android:textStyle="bold"
+                            android:textSize="32sp"
+                            android:textColor="@color/black"
+                            android:layout_marginTop="16dp"/>
                         <RatingBar
                             android:id="@+id/ratingBar"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            app:layout_constraintTop_toBottomOf="@id/restaurantMainTitleTextView"
+                            app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toStartOf="@id/ratingTextView"
                             app:layout_constraintHorizontal_chainStyle="packed"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/restaurantMainTitleTextView" />
-
+                            android:isIndicator="true"/>
                         <TextView
                             android:id="@+id/ratingTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:textColor="@color/black"
-                            android:textSize="32sp"
-                            android:textStyle="bold"
-                            app:layout_constraintBottom_toBottomOf="@id/ratingBar"
-                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@id/ratingBar"
                             app:layout_constraintTop_toTopOf="@id/ratingBar"
-                            tools:text="4.0" />
+                            app:layout_constraintBottom_toBottomOf="@id/ratingBar"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            tools:text="4.0"
+                            android:textSize="32sp"
+                            android:layout_marginStart="16dp"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"/>
 
                         <LinearLayout
                             android:layout_width="0dp"
                             android:layout_height="64dp"
-                            android:orientation="horizontal"
-                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/ratingBar"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/ratingBar">
-
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:orientation="horizontal">
                             <Button
                                 android:id="@+id/callButton"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
-                                android:background="@null"
                                 android:backgroundTint="@color/white"
                                 android:text="@string/call"
                                 android:textColor="@color/black"
                                 android:textSize="16sp"
+                                android:background="@null"
                                 android:visibility="gone"
-                                tools:visibility="visible" />
-
+                                tools:visibility="visible"/>
                             <androidx.constraintlayout.widget.ConstraintLayout
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1">
-
                                 <Button
                                     android:id="@+id/likeButton"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:background="@null"
                                     android:backgroundTint="@color/white"
-                                    android:textColor="@color/black"
-                                    android:textSize="16sp" />
-
-                                <TextView
-                                    android:id="@+id/likeText"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:backgroundTint="@color/white"
-                                    android:clickable="false"
-                                    android:drawablePadding="8dp"
-                                    android:elevation="16dp"
-                                    android:text="@string/like"
                                     android:textColor="@color/black"
                                     android:textSize="16sp"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintEnd_toEndOf="parent"
+                                    android:background="@null" />
+                                <TextView
+                                    android:id="@+id/likeText"
+                                    android:layout_gravity="center"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:backgroundTint="@color/white"
+                                    android:text="@string/menu_like"
+                                    android:textColor="@color/black"
+                                    android:textSize="16sp"
                                     app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintTop_toTopOf="parent"
-                                    tools:drawableStartCompat="@drawable/ic_heart_enable" />
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    tools:drawableStartCompat="@drawable/ic_heart_enable"
+                                    android:elevation="16dp"
+                                    android:drawablePadding="8dp"
+                                    android:clickable="false"/>
                             </androidx.constraintlayout.widget.ConstraintLayout>
-
                             <Button
                                 android:id="@+id/shareButton"
                                 android:layout_width="0dp"
@@ -229,66 +217,59 @@
                                 android:backgroundTint="@color/white"
                                 android:text="@string/share"
                                 android:textColor="@color/black"
-                                android:textSize="16sp" />
-
-
+                                android:textSize="16sp"/>
                         </LinearLayout>
 
-
                     </androidx.constraintlayout.widget.ConstraintLayout>
-
                 </androidx.cardview.widget.CardView>
 
                 <TextView
                     android:id="@+id/deliveryTimeTitleText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="42dp"
                     android:text="배달시간"
-                    android:textStyle="bold"
+                    app:layout_constraintTop_toBottomOf="@id/cardContainer"
                     app:layout_constraintBottom_toTopOf="@id/deliveryTipTitleText"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/cardContainer" />
+                    android:layout_marginTop="42dp"
+                    android:layout_marginStart="16dp"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/deliveryTimeText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    app:layout_constraintBottom_toBottomOf="@id/deliveryTimeTitleText"
                     app:layout_constraintStart_toEndOf="@id/deliveryTimeTitleText"
                     app:layout_constraintTop_toTopOf="@id/deliveryTimeTitleText"
-                    tools:text="48~63분 소요 예정" />
+                    app:layout_constraintBottom_toBottomOf="@id/deliveryTimeTitleText"
+                    android:layout_marginStart="16dp"
+                    tools:text="48~63분 소요 예정"/>
 
                 <TextView
                     android:id="@+id/deliveryTipTitleText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="24dp"
                     android:text="배달팁"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/deliveryTimeTitleText"
                     app:layout_constraintStart_toStartOf="@id/deliveryTimeTitleText"
-                    app:layout_constraintTop_toBottomOf="@id/deliveryTimeTitleText" />
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginBottom="24dp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/deliveryTipText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    app:layout_constraintBottom_toBottomOf="@id/deliveryTipTitleText"
                     app:layout_constraintStart_toEndOf="@id/deliveryTipTitleText"
                     app:layout_constraintTop_toTopOf="@id/deliveryTipTitleText"
-                    tools:text="1000원 ~ 2400원" />
-
-
-
+                    app:layout_constraintBottom_toBottomOf="@id/deliveryTipTitleText"
+                    android:layout_marginStart="16dp"
+                    tools:text="1000원 ~ 2400원"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <Toolbar
+            <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -301,22 +282,20 @@
                 style="?attr/toolbarWithArrowButtonStyle"
                 android:gravity="center">
 
+
                 <TextView
                     android:id="@+id/restaurantTitleTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    tools:text="음식점 이름"
                     android:textColor="@color/black"
                     android:textSize="16sp"
-                    android:textStyle="bold"
-                    tools:text="음식점 이름" />
+                    android:textStyle="bold" />
 
-            </Toolbar>
-
+            </androidx.appcompat.widget.Toolbar>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
-
     </com.google.android.material.appbar.AppBarLayout>
-
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

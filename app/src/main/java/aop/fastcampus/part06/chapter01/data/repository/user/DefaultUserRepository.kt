@@ -30,6 +30,11 @@ class DefaultUserRepository(
 
         }
 
+    override suspend fun getAllUserLikedRestaurantList(): List<RestaurantEntity> = withContext(ioDispatcher){
+        restaurantDao.getAll()
+    }
+
+
     override suspend fun insertUserLikedRestaurant(restaurantEntity: RestaurantEntity)
     = withContext(ioDispatcher)
     {

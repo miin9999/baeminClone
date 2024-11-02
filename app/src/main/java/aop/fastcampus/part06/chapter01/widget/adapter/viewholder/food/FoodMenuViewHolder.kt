@@ -1,11 +1,12 @@
 package aop.fastcampus.part06.chapter01.widget.adapter.viewholder.food
 
-import android.util.Log
+
 import aop.fastcampus.part06.chapter01.R
 import aop.fastcampus.part06.chapter01.databinding.ViewholderFoodMenuBinding
 import aop.fastcampus.part06.chapter01.extensions.clear
 import aop.fastcampus.part06.chapter01.extensions.load
 import aop.fastcampus.part06.chapter01.model.restaurant.food.FoodModel
+
 import aop.fastcampus.part06.chapter01.screen.base.BaseViewModel
 import aop.fastcampus.part06.chapter01.util.provider.ResourcesProvider
 import aop.fastcampus.part06.chapter01.widget.adapter.listener.AdapterListener
@@ -17,15 +18,14 @@ class FoodMenuViewHolder(
     private val binding: ViewholderFoodMenuBinding,
     viewModel: BaseViewModel,
     resourcesProvider: ResourcesProvider
-) : ModelViewHolder<FoodModel>(binding, viewModel, resourcesProvider) {
-
+): ModelViewHolder<FoodModel>(binding, viewModel, resourcesProvider) {
 
     override fun reset() = with(binding) {
         foodImage.clear()
-
     }
 
     override fun bindData(model: FoodModel) {
+        super.bindData(model)
         with(binding) {
             foodImage.load(model.imageUrl, 24f, CenterCrop())
             foodTitleText.text = model.title
@@ -35,13 +35,11 @@ class FoodMenuViewHolder(
     }
 
     override fun bindViews(model: FoodModel, adapterListener: AdapterListener) {
-
         if (adapterListener is FoodMenuListListener) {
             binding.root.setOnClickListener {
                 adapterListener.onClickItem(model)
             }
         }
-
     }
 
 }

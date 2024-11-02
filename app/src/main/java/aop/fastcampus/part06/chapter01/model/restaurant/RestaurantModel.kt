@@ -7,7 +7,7 @@ import aop.fastcampus.part06.chapter01.screen.main.home.restaurant.RestaurantCat
 
 data class RestaurantModel(
     override val id: Long,
-    override val type: CellType=CellType.RESTAURANT_CELL,
+    override val type: CellType = CellType.RESTAURANT_CELL,
     val restaurantInfoId: Long,
     val restaurantCategory: RestaurantCategory,
     val restaurantTitle: String,
@@ -16,7 +16,7 @@ data class RestaurantModel(
     val reviewCount: Int,
     val deliveryTimeRange: Pair<Int, Int>,
     val deliveryTipRange: Pair<Int, Int>,
-    val restaurantTelNumber:String?
+    val restaurantTelNumber: String?,
 ) : Model(id, type) {
 
     fun toEntity() = RestaurantEntity(
@@ -31,4 +31,5 @@ data class RestaurantModel(
         deliveryTipRange,
         restaurantTelNumber
     )
+
 }

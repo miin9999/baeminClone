@@ -3,6 +3,7 @@ package aop.fastcampus.part06.chapter01.screen.main.home
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Context
 import android.location.Location
 import android.location.LocationListener
@@ -18,12 +19,16 @@ import aop.fastcampus.part06.chapter01.data.entity.LocationLatLngEntity
 import aop.fastcampus.part06.chapter01.data.entity.MapSearchInfoEntity
 import aop.fastcampus.part06.chapter01.databinding.FragmentHomeBinding
 import aop.fastcampus.part06.chapter01.screen.base.BaseFragment
+import aop.fastcampus.part06.chapter01.screen.main.MainActivity
+import aop.fastcampus.part06.chapter01.screen.main.MainTabMenu
 import aop.fastcampus.part06.chapter01.screen.main.home.restaurant.RestaurantCategory
 import aop.fastcampus.part06.chapter01.screen.main.home.restaurant.RestaurantListFragment
 import aop.fastcampus.part06.chapter01.screen.main.home.restaurant.RestaurantOrder
 import aop.fastcampus.part06.chapter01.screen.mylocation.MyLocationActivity
+import aop.fastcampus.part06.chapter01.screen.order.OrderMenuListActivity
 import aop.fastcampus.part06.chapter01.widget.adapter.RestaurantListFragmentPagerAdapter
 import com.google.android.material.tabs.TabLayoutMediator
+import com.google.firebase.auth.FirebaseAuth
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -40,6 +45,7 @@ class HomeFragment : BaseFragment<HomeViewModel,FragmentHomeBinding>() {
 
     private lateinit var myLocationListener: MyLocationListener
 
+    private val firebaseAuth by lazy{ FirebaseAuth.getInstance() }
 
     // 호출한 액티비티가 종료될 때 실행됨 !!
     private val changeLocationLauncher =
@@ -218,7 +224,18 @@ class HomeFragment : BaseFragment<HomeViewModel,FragmentHomeBinding>() {
                 binding.basketButtonContainer.isVisible = true
                 binding.basketCountTextView.text = getString(R.string.basket_count,it.size)
                 binding.basketButton.setOnClickListener{
-                    // TODO 주문하기 화면으로 이동 or 로그인
+                    if(firebaseAuth.currentUser == null){
+                        // 로그인이 안 되어 있을 때
+                        alertLoginNeed {
+                            (requireActivity() as MainActivity).goToTab(MainTabMenu.MY)
+                        }
+
+                    }else{
+                        startActivity(
+                            OrderMenuListActivity.newIntent(requireContext())
+                        )
+
+                    }
                 }
 
             }else{
@@ -226,8 +243,21 @@ class HomeFragment : BaseFragment<HomeViewModel,FragmentHomeBinding>() {
                 binding.basketButton.setOnClickListener(null)
             }
         }
+    }
 
-
+    private fun alertLoginNeed(afterAction: () -> Unit) {
+        AlertDialog.Builder(requireContext())
+            .setTitle("로그인이 필요합니다.")
+            .setMessage("주문하려면 로그인이 필요합니다. My탭으로 이동하시겠습니까?")
+            .setPositiveButton("이동") { dialog, _ ->
+                afterAction()
+                dialog.dismiss()
+            }
+            .setNegativeButton("취소") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .create()
+            .show()
     }
 
     private fun getMyLocation(){
