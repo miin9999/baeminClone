@@ -1,4 +1,4 @@
-package aop.fastcampus.part06.chapter01.widget.adapter
+package aop.fastcampus.part6.chapter01.widget.adapter
 
 import android.net.Uri
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import aop.fastcampus.part06.chapter01.databinding.ViewholderPhotoItemBinding
 import aop.fastcampus.part06.chapter01.extensions.load
+
 
 class PhotoListAdapter(
     private val removePhotoListener: (Uri) -> Unit

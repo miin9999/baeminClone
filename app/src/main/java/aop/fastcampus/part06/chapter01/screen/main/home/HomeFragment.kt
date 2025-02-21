@@ -98,7 +98,7 @@ class HomeFragment : BaseFragment<HomeViewModel,FragmentHomeBinding>() {
         orderChipGroup.setOnCheckedChangeListener{ _, checkedId ->
             when(checkedId){
                 R.id.chipDefault ->{
-                    chipInitialize.isGone =true
+                    chipInitialize.isGone = true
                     changeRestaurantOrder(RestaurantOrder.DEFAULT)
                 }
 
@@ -215,6 +215,8 @@ class HomeFragment : BaseFragment<HomeViewModel,FragmentHomeBinding>() {
                     }
 
                 }
+
+                else -> Unit
 
             }
         }

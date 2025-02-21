@@ -42,8 +42,6 @@ fun provideFoodRetrofit(
 }
 
 
-
-
 fun provideGsonConvertFactory():GsonConverterFactory{
     return GsonConverterFactory.create()
 }

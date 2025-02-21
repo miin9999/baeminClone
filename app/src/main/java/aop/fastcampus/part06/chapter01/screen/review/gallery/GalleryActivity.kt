@@ -8,8 +8,8 @@ import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import aop.fastcampus.part06.chapter01.R
 import aop.fastcampus.part06.chapter01.databinding.ActivityGalleryBinding
+import aop.fastcampus.part06.chapter01.widget.GalleryPhotoListAdapter
 import aop.fastcampus.part06.chapter01.widget.adapter.GridDividerDecoration
-import aop.fastcampus.part06.chapter01.widget.adapter.PhotoListAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -25,7 +25,7 @@ class GalleryActivity : AppCompatActivity() {
 
     private val viewModel by viewModel<GalleryViewModel>()
 
-    private val adapter = PhotoListAdapter {
+    private val adapter = GalleryPhotoListAdapter {
         viewModel.selectPhoto(it)
     }
 

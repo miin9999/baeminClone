@@ -16,7 +16,7 @@ import aop.fastcampus.part06.chapter01.data.entity.ReviewEntity
 import aop.fastcampus.part06.chapter01.databinding.ActivityAddRestaurantReviewBinding
 import aop.fastcampus.part06.chapter01.screen.review.camera.preview.CameraActivity
 import aop.fastcampus.part06.chapter01.screen.review.gallery.GalleryActivity
-import aop.fastcampus.part06.chapter01.widget.adapter.PhotoListAdapter
+import aop.fastcampus.part6.chapter01.widget.adapter.PhotoListAdapter
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage

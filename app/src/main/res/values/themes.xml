@@ -7,6 +7,7 @@
         <item name="toolbarWithCloseButtonStyle">@style/Widget.Aoppart6chapter01.Toolbar.WithClose</item>
 
 
+
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>

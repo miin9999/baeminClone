@@ -4,5 +4,6 @@
     <attr name="toolbarStyle" format="reference"/>
     <attr name="toolbarWithCloseButtonStyle" format="reference"/>
     <attr name="toolbarWithArrowButtonStyle" format="reference"/>
+    <attr name ="vdvdvd" format="reference"/>
 
 </resources>

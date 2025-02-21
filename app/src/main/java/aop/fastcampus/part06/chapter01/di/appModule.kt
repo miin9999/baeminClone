@@ -89,7 +89,7 @@ val appModule = module {
 
     single{ provideLocationDao(get()) }
     single{ provideRestaurantDao(get()) }
-    single{provideFoodMenuBasketDao(get())}
+    single{ provideFoodMenuBasketDao(get())}
 
 
     single<ResourcesProvider> {
